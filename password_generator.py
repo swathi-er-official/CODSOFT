@@ -11,11 +11,17 @@ win.title("Password Generator:")
 win.configure(bg="gold")
 
 
-label = Label(text="Enter the length of the password:", height=5, font="Arial",fg="blue", bg="gold")
+label = Label(text="Username:",font="Arial",fg="blue", bg="gold")
 label.grid(row=0, column=0)
 
+name_entry = Entry(win, width=20)
+name_entry.grid(row=0, column=1)
+
+label = Label(text="Enter the length of the password:",font="Arial",fg="blue", bg="gold")
+label.grid(row=1, column=0)
+
 entry = Entry(win, width=20)
-entry.grid(row=0, column=1, padx=10, pady=5)
+entry.grid(row=1, column=1)
 
 
 def help_message():
@@ -23,17 +29,20 @@ def help_message():
 
 
 help_button= Button(win, text="Help",command=help_message, fg="teal", bg="silver")
-help_button.grid(row=0, column=2, padx=10, pady=5)
+help_button.grid(row=1, column=2)
 
 
 """Function to generate password"""
 def created_password():
-    entry_length = int(entry.get())  # user input
-    if entry_length < 15:
+    entry_length = entry.get()# user input
+    if not entry_length.isnumeric():
+        messagebox.showerror('ERROR','Only numbers are allowed')
+        return
+    elif int(entry_length) < 15:
         messagebox.showerror('ERROR','Password minimum length should be 15. Please re-try')
         return
     characters = string.ascii_letters+string.digits+string.punctuation
-    password = "".join(random.choice(characters) for i in range(entry_length))  #Concatenate any number of strings
+    password = "".join(random.choice(characters) for i in range(int(entry_length)))  #Concatenate any number of strings
     password_entry.delete(0,END)    #Delete text from FIRST to LAST (not included).
     password_entry.insert(0,password)  #Insert STRING at INDEX.
 
@@ -42,28 +51,32 @@ def generate_message():
     if entry.get() == "":
         messagebox.showerror("ERROR", "Please enter the length of the password")
         return
+    elif name_entry.get() == "":
+        messagebox.showerror("ERROR", "Please enter the username")
+        return
     created_password()
 
 
 generate_button = Button(win, text="Generate", command=generate_message,font="Arial", fg="dark violet", bg="lavender")
-generate_button.grid(row=1, column=1, padx=10, pady=5)
+generate_button.grid(row=2, column=1)
 
 
-label = Label(text="Password:", height=10, font="Arial",fg="blue", bg="gold")
-label.grid(row=2, column=0, padx=10, pady=5)
+label = Label(text="Password:", height=5, font="Arial",fg="blue", bg="gold")
+label.grid(row=3, column=0)
 
 password_entry = Entry(win, width=30)
-password_entry.grid(row=2, column=1, padx=10, pady=5)
+password_entry.grid(row=3, column=1)
 
 
 """Function to clear the entries"""
-def clear():
+def reset():
     entry.delete(0, END)
     password_entry.delete(0, END)
+    name_entry.delete(0, END)
 
 
-clear_button = Button(win,text="Clear", font="bold", command=clear, fg="red", bg="silver")
-clear_button.grid(row=3, column=0, padx=5, pady=5)
+reset_button = Button(win,text="Reset", font="bold", command=reset, fg="red", bg="silver")
+reset_button.grid(row=4, column=2)
 
 """Call the mainloop of Tk."""
 win.mainloop()
