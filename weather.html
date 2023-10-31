@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Current Weather Information</title>
+    <style>
+        form button[type=submit] {
+         background-color: gold;
+         color: green;
+         font-weight: bold;
+         border: none;
+         padding: 8px 16px;
+         border-radius: 8px;
+         cursor: pointer;
+       }
+        form button[type=submit]:hover {
+            background-color: blue;
+        }
+
+        .error{
+           color:Red;
+           font-size:25px;
+           }
+    </style>
+</head>
+<body>
+<form action = "/weather/" method="post" onsubmit="return validateForm()">
+    <label for="place"><b>Place or ZIPCode:</b></label>
+    <input type="text" name="place" id="place">
+    <span id="error-msg" class="error"></span>
+    <br><br>
+    <button type ="submit">Submit</button>
+</form>
+ <script>
+        function validateForm() {
+            var placeInput = document.getElementById("place");
+            var errorMsg = document.getElementById("error-msg");
+
+            if (placeInput.value.trim() == "") {
+                errorMsg.innerHTML = "Please enter a place or ZIPCode";
+                return false;
+            } else {
+                errorMsg.innerHTML = "";
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
