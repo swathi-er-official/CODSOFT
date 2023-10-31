@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Forecast Result</title>
+    <style>
+    .error-message{
+    font-weight:bold;
+    color:red;
+    </style>
+</head>
+<body>
+{% if error %}
+    <div class="error-message">{{error}}</div>
+{% else %}
+    <h1>Weather Forecast for <strong>{{name}}</strong></h1>
+    <h2>Current Date:{{date}}</h2>
+    <p><b>City Name:</b>{{name}}</p>
+    <p><b>Temperature:</b>{{temperature}}&deg;C</p>
+    <p><b>Humidity:</b>{{humidity}}%</p>
+    <p><b>Wind Speed:</b>{{wind_speed}}km/h</p>
+    <p><b>Weather Description:</b>{{weather_description}}</p>
+    <a href="#" onclick="window.history.back()"><strong>Back</strong></a>
+{% endif %}
+</body>
+</html>
