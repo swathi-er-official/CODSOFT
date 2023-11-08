@@ -4,7 +4,7 @@ This project gives basic calculator functionalities to end-user.
 ## Running
 pip install - r requirements.txt
 
-python calc.py
+python codsoft_2.py
 
 ## Controls
 (+) plus  - Addition
