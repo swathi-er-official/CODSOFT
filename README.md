@@ -1,4 +1,4 @@
-# Current WEather Forecast .
+# Current Weather Forecast .
 
 In this project when user enter place or ZIPCode of the Cirty API retrieves current weather status with Temperature, Humidity, WindSpeed and Description of the weather.
 
@@ -6,7 +6,7 @@ In this project when user enter place or ZIPCode of the Cirty API retrieves curr
 
 pip install - r requirements.txt
 
-python app.py
+python codsoft_4.py
 
 http://127.0.0.1:5000
 
