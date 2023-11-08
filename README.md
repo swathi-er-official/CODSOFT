@@ -3,7 +3,7 @@ This project helps users to organize their tasks efficiently.
 
 ## Running
 pip install -r requirements.txt
-python To-Dos.py
+python codsoft_1.py
 
 # Modules
 import time 
